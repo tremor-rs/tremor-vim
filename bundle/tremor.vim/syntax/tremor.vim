@@ -11,7 +11,7 @@ set cpo&vim
 
 syn case match
 
-"syn case match tremorSync grouphere NONE /\v^\s*%(emit|drop|event|let|match|of|case|when|end|patch|insert|upsert|update|erase|merge|for|default)>/
+"syn case match tremorSync grouphere NONE /\v^\s*%(emit|drop|event|let|match|of|case|when|end|patch|insert|upsert|update|erase|merge|for|default|present|absent)>/
 
 syn match   tremorErrSymbol       /[@'^&\\#?]/
 hi def link tremorErrSymbol       Error
@@ -22,7 +22,7 @@ hi def link tremorErrNumeric     Error
 syn match   tremorBracket         /[{[()\]}]/
 
 syn keyword tremorKwControl       emit drop let match of case when end patch insert upsert update
-                            \     erase merge event for default
+                            \     erase merge event for default present absent
 hi def link tremorKwControl       Keyword
 
 syn keyword tremorNull            null
