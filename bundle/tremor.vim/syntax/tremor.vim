@@ -21,7 +21,7 @@ hi def link tremorErrNumeric     Error
 
 syn match   tremorBracket         /[{[()\]}]/
 
-syn keyword tremorKwControl       emit drop let match of case when end patch insert upsert update
+syn keyword tremorKwControl       emit drop const let match of case when end patch insert upsert update
                             \     erase merge event for default present absent
 hi def link tremorKwControl       Keyword
 
