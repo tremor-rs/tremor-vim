@@ -65,7 +65,7 @@ hi def link tremorTest            String
 " Operators
 syntax match tremorOperator "\([-!#$%`&\*\+./<=>@^|~:]\|\<\>\)"
 highlight link tremorOperator Operator
-syn keyword tremorOperatorWords   and or not
+syn keyword tremorOperatorWords   and or xor not
 hi def link tremorOperatorWords   Operator
 
 syntax match     tremorModuleName    "\w\(\w\)*\:\:"
