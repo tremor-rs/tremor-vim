@@ -19,9 +19,22 @@ hi def link tremorErrNumeric      Error
 
 syn match   tremorBracket         /[{[()\]}]/
 
-syn keyword tremorKwControl       emit drop const let match of case when end patch insert upsert update
-                            \     erase merge event for default present absent
+syn keyword tremorKwControl       event
 hi def link tremorKwControl       Keyword
+
+syn keyword tremorScriptKwControl emit drop
+                                \ const let
+                                \ for
+                                \ match of case when default end
+                                \ patch insert upsert update erase move copy merge
+hi def link tremorScriptKwControl Keyword
+
+syn keyword tremorQueryKwControl  select create define
+                                \ operator script
+                                \ from into with
+                                \ group by args window stream tumbling sliding where having
+                                \ set each
+hi def link tremorQueryKwControl  Keyword
 
 syn keyword tremorNull            null
 hi def link tremorNull            String
@@ -36,7 +49,7 @@ syn match   tremorFloat           /\v%(\d+_*)+[eE][-+]?%(\d+_*)+/ contains=tremo
 syn match   tremorFloat           /\v%(\d+_*)+\.%(\d+_*)+%([eE][-+]?%(\d+_*)+)?/ contains=tremorErrNumeric
 hi def link tremorFloat           Float
 
-syn cluster tremorKeyword         contains=tremorKw.*,tremorBoolean
+syn cluster tremorKeyword         contains=tremorScriptKw.*,tremorQueryKw.*,tremorBoolean
 syn cluster tremorComments        contains=tremorComment
 
 syn match   tremorErrEscape       /\\\_.\?\_s*/ contained
@@ -62,7 +75,7 @@ hi def link tremorTest            String
 syntax match   tremorOperator     "\([-!#$%`&\*\+./<=>@^|~:]\|\<\>\)"
 highlight link tremorOperator     Operator
 
-syn keyword tremorOperatorWords   and or xor not
+syn keyword tremorOperatorWords   and or xor not present absent
 hi def link tremorOperatorWords   Operator
 
 syntax match   tremorModuleName   "\w\(\w\)*\:\:"
