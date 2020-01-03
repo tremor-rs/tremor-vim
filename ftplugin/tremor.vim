@@ -1,6 +1,6 @@
 " Vim ftplugin file
-" Language:     Tremor
-" Maintainer:   Darach Ennis
+" Language: Tremor
+" Maintainer: The Tremor Team
 
 if exists('b:did_ftplugin')
   finish
