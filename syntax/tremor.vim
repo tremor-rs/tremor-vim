@@ -19,25 +19,29 @@ hi def link tremorErrNumeric      Error
 
 syn match   tremorBracket         /[{[()\]}]/
 
-syn keyword tremorKwControl       event
-hi def link tremorKwControl       Keyword
+" keywords common to all tremor languages
+" grouping as special so that we have different color for these from other keywords
+syn keyword tremorKwSpecial       event
+hi def link tremorKwSpecial       Special
 
-syn keyword tremorScriptKwControl emit drop
-                                \ const let
+syn keyword tremorScriptKwSpecial emit drop
+hi def link tremorScriptKwSpecial Type
+syn keyword tremorScriptKwControl const let
                                 \ for
                                 \ match of case when default end
                                 \ patch insert upsert update erase move copy merge
 hi def link tremorScriptKwControl Keyword
 
-syn keyword tremorQueryKwControl  select create define
-                                \ operator script
+syn keyword tremorQueryKwSpecial  select create define
+hi def link tremorQueryKwSpecial  Type
+syn keyword tremorQueryKwControl  operator script
                                 \ from into with
                                 \ group by args window stream tumbling sliding where having
                                 \ set each
 hi def link tremorQueryKwControl  Keyword
 
 syn keyword tremorNull            null
-hi def link tremorNull            String
+hi def link tremorNull            Constant
 
 syn keyword tremorBoolean         true false
 hi def link tremorBoolean         Boolean
@@ -64,7 +68,9 @@ syn match   tremorEscape          /\v\\u\x{4}/ contained
 syn match   tremorEscape          /\v\\U\x{6}/ contained
 hi def link tremorEscape          SpecialChar
 
-syn region  tremorString          matchgroup=tremorStringX start=/"/ skip=/\\./ end=/"/ contains=tremorEscapeDQuote,tremorEscape,tremorErrEscape
+syn region  tremorInterpolation   contained matchgroup=tremorBracket start=/{/ end=/}/ contains=@tremorExpression
+
+syn region  tremorString          matchgroup=tremorStringX start=/"/ skip=/\\./ end=/"/ contains=tremorInterpolation,tremorEscapeDQuote,tremorEscape,tremorErrEscape
 hi def link tremorString          String
 syn region  tremorDocumentString  matchgroup=tremorDocumentStringX start=/"\ze""/ end=/"""*\zs"/
 hi def link tremorDocumentString  String
@@ -73,15 +79,17 @@ syn region  tremorTest            matchgroup=tremorTestX start=/|/ skip=/\\./ en
 hi def link tremorTest            String
 
 syntax match   tremorOperator     "\([-!#$%`&\*\+./<=>@^|~:]\|\<\>\)"
-highlight link tremorOperator     Operator
+hi def link    tremorOperator     Operator
 
 syn keyword tremorOperatorWords   and or xor not present absent
 hi def link tremorOperatorWords   Operator
 
 syntax match   tremorModuleName   "\w\(\w\)*\:\:"
+hi def link    tremorModuleName   Function
 syntax match   tremorFuncName     "\w\(\w\)*("he=e-1,me=e-1
-highlight link tremorFuncName     Function
-highlight link tremorModuleName   Function
+hi def link    tremorFuncName     Function
+syntax match   tremorExtrName     "\w\(\w\)*|"he=e-1,me=e-1
+hi def link    tremorExtrName     Function
 
 syn keyword tremorCommentTodo     TODO contained
 hi def link tremorCommentTodo     Todo
@@ -98,6 +106,8 @@ syn match   tremorCommentX        @/\ze/.*$@ contained transparent
 hi def link tremorTestX           String
 hi def link tremorStringX         String
 hi def link tremorDocumentStringX String
+
+syn cluster tremorExpression      contains=tremor.*
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
