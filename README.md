@@ -1,10 +1,28 @@
-** tremor-vim **
+# tremor-vim
 
-A VIM syntax mode for tremor-script v0.5.
+Support for tremor languages in VIM.
 
-Installation:
+Features:
+
+* Filetype detection
+* Filetype settings
+* Syntax highlighting
+
+For richer language integration (via Trill), see: https://github.com/wayfair-incubator/tremor-language-server
+
+## Installation
+
+### Pathogen
 
 ```bash
 cd ~/.vim/bundle
 git clone https://github.com/wayfair-incubator/tremor-vim
+```
+
+### Vim-plug
+
+In your `~/.vimrc`:
+
+```vim
+Plug 'wayfair-incubator/tremor-vim'
 ```
