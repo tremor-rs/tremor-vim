@@ -22,11 +22,11 @@ syn cluster tremorQueryKeyword    contains=tremorQueryKw.*
 
 " source syntax definitions from the tremor-script file
 " (since trickle files can embed tremor-script code)
-runtime! syntax/tremor-script.vim
+runtime! syntax/tremor.vim
 
 " source syntax definitions from the common tremor file
-runtime! syntax/tremor.vim
+runtime! syntax/tremor_common.vim
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
-let b:current_syntax = 'tremor-query'
+let b:current_syntax = 'trickle'

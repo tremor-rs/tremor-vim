@@ -10,7 +10,7 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 " source settings from the common tremor file
-runtime! ftplugin/tremor.vim
+runtime! ftplugin/tremor_common.vim
 
 " extend the functionality of % key to jump between these tremor keyword groups
 runtime macros/matchit.vim " needed for the following match settings to work
