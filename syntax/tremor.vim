@@ -1,4 +1,5 @@
 " Vim syntax file
+" Description: Common syntax definitions for all tremor languages
 " Language: Tremor
 " Maintainer: The Tremor Team
 

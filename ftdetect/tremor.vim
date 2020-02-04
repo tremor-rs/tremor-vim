@@ -2,7 +2,6 @@
 " Language: Tremor
 " Maintainer: The Tremor Team
 
-
 function SetCommonTremorOptions()
   " syntax highligting
   set syntax=tremor
@@ -24,6 +23,8 @@ function SetCommonTremorOptions()
   endif
 endfunction
 
-
-autocmd BufNewFile,BufRead *.tremor set filetype=tremor-script |  call SetCommonTremorOptions()
+" we apply common configuration for all tremor filetypes right now, but the
+" distinction between filetypes is still going to be useful for users (and
+" also for external tools like tremor language server)
+autocmd BufNewFile,BufRead *.tremor set filetype=tremor-script | call SetCommonTremorOptions()
 autocmd BufNewFile,BufRead *.trickle set filetype=tremor-query | call SetCommonTremorOptions()
