@@ -25,22 +25,6 @@ syn match   tremorBracket         /[{[()\]}]/
 syn keyword tremorKwSpecial       event
 hi def link tremorKwSpecial       Special
 
-syn keyword tremorScriptKwSpecial emit drop
-hi def link tremorScriptKwSpecial Type
-syn keyword tremorScriptKwControl const let
-                                \ for
-                                \ match of case when default end
-                                \ patch insert upsert update erase move copy merge
-hi def link tremorScriptKwControl Keyword
-
-syn keyword tremorQueryKwSpecial  select create define
-hi def link tremorQueryKwSpecial  Type
-syn keyword tremorQueryKwControl  operator script
-                                \ from into with
-                                \ group by args window stream tumbling sliding where having
-                                \ set each
-hi def link tremorQueryKwControl  Keyword
-
 syn keyword tremorNull            null
 hi def link tremorNull            Constant
 
@@ -54,7 +38,7 @@ syn match   tremorFloat           /\v%(\d+_*)+[eE][-+]?%(\d+_*)+/ contains=tremo
 syn match   tremorFloat           /\v%(\d+_*)+\.%(\d+_*)+%([eE][-+]?%(\d+_*)+)?/ contains=tremorErrNumeric
 hi def link tremorFloat           Float
 
-syn cluster tremorKeyword         contains=tremorScriptKw.*,tremorQueryKw.*,tremorBoolean
+syn cluster tremorKeyword         contains=tremorKw.*,tremorBoolean
 syn cluster tremorComments        contains=tremorComment
 
 syn match   tremorErrEscape       /\\\_.\?\_s*/ contained

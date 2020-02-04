@@ -1,4 +1,5 @@
 " Vim ftplugin file
+" Description: Common file settings for all tremor languages
 " Language: Tremor
 " Maintainer: The Tremor Team
 
@@ -16,15 +17,18 @@ setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
 
-runtime macros/matchit.vim " needed for the following match settings to work
-let b:match_ignorecase = 0
-let b:match_skip = 's:Comment\|String\|CaseGuard'
-let b:match_words = 'match:case:default:end,' .
-                  \ 'patch:end,' .
-                  \ 'merge:end,' .
-                  \ 'select:from:into,' .
-                  \ 'create:end,' .
-                  \ 'define:end'
+" setup for language server
+" depends on https://github.com/wayfair-incubator/ale
+" proceed only if ALE is installed -- we determine that by checking whether
+" the ALEInfo command is present
+if exists(':ALEInfo')
+  " use the common tremor integration defined in ALE
+  let b:ale_linter_aliases = ['tremor']
+
+  " actually enables the language server.
+  " better to set from inidividual vimrc (along with other ale linters), so disabled here
+  "let b:ale_linters = ['tremor-language-server']
+endif
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
