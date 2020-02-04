@@ -1,5 +1,5 @@
 " Vim ftplugin file
-" Language: tremor-script
+" Language: tremor-query (trickle)
 " Maintainer: The Tremor Team
 
 if exists('b:did_ftplugin')
@@ -16,9 +16,9 @@ runtime! ftplugin/tremor_common.vim
 runtime macros/matchit.vim " needed for the following match settings to work
 let b:match_ignorecase = 0
 let b:match_skip = 's:Comment\|String\|CaseGuard'
-let b:match_words = 'match:case:default:end,' .
-                  \ 'patch:end,' .
-                  \ 'merge:end,'
+let b:match_words = 'match:select:from:into,' .
+                  \ 'create:end,' .
+                  \ 'define:end'
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
