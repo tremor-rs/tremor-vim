@@ -22,7 +22,7 @@ syn match   tremorBracket         /[{[()\]}]/
 
 " keywords common to all tremor languages
 " grouping as special so that we have different color for these from other keywords
-syn keyword tremorKwSpecial       event
+syn keyword tremorKwSpecial       event state
 hi def link tremorKwSpecial       Special
 
 syn keyword tremorNull            null
