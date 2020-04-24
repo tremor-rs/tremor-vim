@@ -22,7 +22,7 @@ syn match   tremorBracket         /[{[()\]}]/
 
 " keywords common to all tremor languages
 " grouping as special so that we have different color for these from other keywords
-syn keyword tremorKwSpecial       event state
+syn keyword tremorKwSpecial       event state args group window
 hi def link tremorKwSpecial       Special
 
 syn keyword tremorNull            null
@@ -66,12 +66,12 @@ hi def link tremorTest            String
 syntax match   tremorOperator     "\([-!#$%`&\*\+./<=>@^|~:]\|\<\>\)"
 hi def link    tremorOperator     Operator
 
-syn keyword tremorOperatorWords   and or xor not present absent
+syn keyword tremorOperatorWords   and or xor not present absent with as of
 hi def link tremorOperatorWords   Operator
 
-syntax match   tremorModuleName   "\w\(\w\)*\:\:"
+syntax match   tremorModuleName   "\(\w\(\w\)*\*\:\:\)*\w\(\w\)*"
 hi def link    tremorModuleName   Function
-syntax match   tremorFuncName     "\w\(\w\)*("he=e-1,me=e-1
+syntax match   tremorFuncName     "\(\(\w\(\w\)*\:\:\)\)?\w\(\w\)*("he=e-1,me=e-1
 hi def link    tremorFuncName     Function
 syntax match   tremorExtrName     "\w\(\w\)*|"he=e-1,me=e-1
 hi def link    tremorExtrName     Function
