@@ -16,7 +16,7 @@ syn keyword tremorScriptKwControl const let
                                 \ for
                                 \ match of case when default end
                                 \ patch insert upsert update erase move copy merge
-                                \ mod use
+                                \ mod use #!line #!config
                                 \ intrinsic fn recur
 hi def link tremorScriptKwControl Keyword
 
