@@ -5,3 +5,4 @@
 
 autocmd BufNewFile,BufRead *.tremor set filetype=tremor
 autocmd BufNewFile,BufRead *.trickle set filetype=trickle
+autocmd BufNewFile,BufRead *.troy set filetype=troy
