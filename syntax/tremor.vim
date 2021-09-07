@@ -18,7 +18,6 @@ syn keyword tremorScriptKwControl const let
                                 \ patch insert upsert update erase move copy merge
                                 \ mod use #!line #!config
                                 \ intrinsic fn recur
-
 hi def link tremorScriptKwControl Keyword
 
 syn cluster tremorScriptKeyword   contains=tremorScriptKw.*
